@@ -1,22 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-import { Form, FormGroup } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './components/authentication/Login';
+import Register from './components/authentication/Register';
 
 function App() {
   return (
-    <div className="App">
-      <Form>
-        <FormGroup>
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text"
-                        placeholder='Enter username'
-                        name='username'/>
-        </FormGroup>
-        <FormGroup>
-          <Form.Label></Form.Label>
-        </FormGroup>
-      </Form>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path='/' component={Login}/>
+          <Route exact path='/register' component={Register}/>
+        </Switch>
+      </div>
+    </Router>
+    
   );
 }
 

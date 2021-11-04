@@ -10,6 +10,8 @@ function App() {
         <Switch>
           <Route exact path='/' component={Login}/>
           <Route exact path='/register' component={Register}/>
+          <Route exact path='/response-api-error' component={ResponseApiError}/>
+          <Route exact path='/error' component={Error}/>
         </Switch>
       </div>
     </Router>

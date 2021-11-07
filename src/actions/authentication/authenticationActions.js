@@ -19,7 +19,7 @@ export const login = (userCredentials, history) => async dispatch => {
         dispatch({
             type: SUCCESSFUL_LOGIN,
             payload: {
-
+                role: response.roles[0].name
             }
         })
 
@@ -67,7 +67,7 @@ export const logout = (history) => async dispatch => {
         dispatch({
             type: SUCCESSFUL_LOGOUT,
             payload: {
-                
+                role: 'GUEST'
             }
         })
 

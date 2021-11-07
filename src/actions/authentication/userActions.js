@@ -12,3 +12,14 @@ export const getUserDetails = (userId, history) => async dispatch => {
         handleActionError(error, history, dispatch, GET_ERRORS) 
     }
 }
+
+export const refreshUser = (history) => async dispatch => {
+
+    try {
+
+    }
+    catch (error) {
+
+        handleActionError(error, history, dispatch, GET_ERRORS)
+    }
+}

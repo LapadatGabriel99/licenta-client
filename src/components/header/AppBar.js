@@ -1,5 +1,8 @@
 import React from 'react'
+import { Nav, Navbar, NavItem } from 'react-bootstrap'
 import { useHistory } from 'react-router';
+import UserNav from './UserNav';
+import NavBarAccount from './NavBarAccount'
 
 function AppBar(props) {
     const { isLoggedIn, role } = props
@@ -34,20 +37,20 @@ function AppBar(props) {
 
         if (isLoggedIn) {
 
-            return <Navbar.Brand href='/user-hub' className="nav-bar-brand">Concurs</Navbar.Brand>
+            return <Navbar.Brand href='/user-hub' className="nav-bar-brand">User Test</Navbar.Brand>
         }
 
-        return <Navbar.Brand href="/" className="nav-bar-brand">Concurs</Navbar.Brand>
+        return <Navbar.Brand href="/" className="nav-bar-brand">User Test</Navbar.Brand>
     }
 
     const displayRoleBasedNavLinks = () => {
 
         if (isLoggedIn) {
 
-            if (role === 'ADMIN') {
+            if (role === 'USER') {
 
                 return (
-                    <AdminNav goToPage={goToPage}/>
+                    <UserNav goToPage={goToPage}/>
                 )
             }
         }
@@ -56,21 +59,7 @@ function AppBar(props) {
             return (
                 <React.Fragment>
                     <Nav.Link className="nav-bar-link" 
-                              onClick={() => goToPage('/')}>Home</Nav.Link>
-                    <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/contacts')}>Contacts</Nav.Link>
-                    <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/participants')}>Participants</Nav.Link>
-                    <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/news')}>News</Nav.Link>
-                    <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/results')}>Results</Nav.Link>
-                    <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/sponsors')}>Sponsors</Nav.Link>
-                    <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/organizers')}>Organizers</Nav.Link>
-                    <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/regulations')}>Regulations</Nav.Link>                              
+                              onClick={() => goToPage('/')}>Home</Nav.Link>                          
                 </React.Fragment>
             )
         }

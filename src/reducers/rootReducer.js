@@ -13,7 +13,7 @@ const emptyState = {
     authenticationReducer: {
         id: '',
         username: ''
-    }
+    },
 }
 
 const rootReducer = (state, action) => {

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap'
+import '../../styles/AppBar.css'
 
 function UserNav(props) {
 

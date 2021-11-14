@@ -4,7 +4,14 @@ import Login from './components/authentication/Login';
 import Register from './components/authentication/Register';
 import UserProfile from './components/user/UserProfile';
 import UserHub from './components/user/UserHub';
-import { useDispatch } from 'react-redux';
+import Error from './components/error/Error';
+import ResponseApiError from './components/error/ResponseApiError';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
+import Home from './components/index/Home';
+import AppBar from './components/header/AppBar';
 
 function App() {
 
@@ -41,6 +48,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <AppBar isLoggedIn={isLoggedIn} role={role}/>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path='/login' component={Login}/>

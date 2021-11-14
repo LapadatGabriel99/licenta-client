@@ -1,0 +1,35 @@
+.nav-bar {
+
+    background-color: #343a40;
+    min-height: 55px;
+    height: 60px;
+}
+
+.nav-bar-brand {
+
+    font-size: 2.0rem !important;
+    padding-bottom: 0.5125rem !important;
+}
+
+.nav-bar-link {
+
+    font-size: 1.25rem;
+}
+
+.nav-bar-link-login {
+
+    font-size: 1.75rem;
+    margin-bottom: 0.3125rem;
+    margin-right: 4.0rem;
+}
+
+.nav-bar-account {
+    margin-right: 4.5rem;
+    font-size: 1.45rem;
+}
+
+.nav-link-hidden {
+
+    text-decoration: none;
+    color: inherit;
+}

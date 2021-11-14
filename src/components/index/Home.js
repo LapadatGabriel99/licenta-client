@@ -4,7 +4,7 @@ import '../../styles/Home.css'
 function Home(props) {
     return (
          <h1 className="main-text-area">
-            Welcome to Concurs.com
+            Test User Tool
         </h1>
     )
 }

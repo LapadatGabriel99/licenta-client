@@ -3,6 +3,7 @@ import { Nav, Navbar, NavItem } from 'react-bootstrap'
 import { useHistory } from 'react-router';
 import UserNav from './UserNav';
 import NavBarAccount from './NavBarAccount'
+import '../../styles/AppBar.css'
 
 function AppBar(props) {
     const { isLoggedIn, role } = props
@@ -66,7 +67,7 @@ function AppBar(props) {
     }
 
     return (
-        <Navbar className="nav-bar" variant="dark">
+        <Navbar className="nav-bar" bg="dark" variant="dark">
             {goToIndexOrGoToHub()}
             <Nav className="mr-auto">
                 {displayRoleBasedNavLinks()}

@@ -35,7 +35,7 @@ export const register = (userCredentials, history) => async dispatch => {
     try {
 
         const response = await axios
-            .post('http://localhost:8090/api/user/register', userCredential)
+            .post('http://localhost:8090/api/user/register', userCredentials)
 
         dispatch({
             type: REGISTER,

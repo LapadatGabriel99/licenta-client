@@ -6,21 +6,33 @@ import testReducer from "./testReducer";
 import categoryReducer from "./categoryReducer";
 import questionReducer from "./questionReducer";
 import answerReducer from "./answerReducer";
+import userReducer from "./userReducer";
+import authorizationReducer from "./authorizationReducer";
 
 const appReducer = combineReducers({
     error: errorReducer,
-    authenticationReducer: authenticationReducer,
+    user: userReducer,
+    authentication: authenticationReducer,
+    authorization: authorizationReducer,
     test: testReducer,
     category: categoryReducer,
     question: questionReducer,
-    answer: answerReducer
+    answer: answerReducer,
 })
 
 const emptyState = {
     error: {},
-    authenticationReducer: {
+    user: {
         id: '',
         username: ''
+    },
+    authentication: {
+        id: '',
+        username: ''
+    },
+    authorization: {
+        isLoggedIn: false,
+        role: 'GUEST'
     },
     test: {
         tests: [],

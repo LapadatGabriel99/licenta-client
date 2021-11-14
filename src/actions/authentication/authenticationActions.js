@@ -6,22 +6,21 @@ export const login = (userCredentials, history) => async dispatch => {
 
     try {
         const response = await axios
-            .post('http://localhost:8090/api/user/login', userCredentials, {
-
-                withCredentials: true
-            })
+            .post('http://localhost:8090/api/user/login', userCredentials)
 
         dispatch({
             type: LOGIN,
-            payload: response.data
+            payload: response.data.userDTO
         })
 
         dispatch({
             type: SUCCESSFUL_LOGIN,
             payload: {
-                role: response.roles[0].name
+                role: response.data.usedDTO.roles[0].name
             }
         })
+
+        localStorage.setItem('jwtToken', response.data.token)
 
         history.push('/userHub')
     }
@@ -55,9 +54,7 @@ export const logout = (history) => async dispatch => {
 
     try {
 
-        await axios.delete('http://localhost:8090/api//user/logout', {
-            withCredentials: true
-        })
+        await axios.delete('http://localhost:8090/api/user/logout')
 
         dispatch({
             type: CLEAR_ALL_DATA,

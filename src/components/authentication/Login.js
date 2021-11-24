@@ -99,6 +99,8 @@ const Login = (props) => {
                 <a href="/">Home</a>
                 <span className="p-2">|</span>
                 <a href="#">Forgot password</a>
+                <span className="p-2">|</span>
+                <a href="/register">Register</a>
             </div>
         </Form>
     )

@@ -16,13 +16,13 @@ export const login = (userCredentials, history) => async dispatch => {
         dispatch({
             type: SUCCESSFUL_LOGIN,
             payload: {
-                role: response.data.usedDTO.roles[0].name
+                role: response.data.userDTO.roles[0].name
             }
         })
 
         localStorage.setItem('jwtToken', response.data.token)
 
-        history.push('/userHub')
+        history.push('/user-hub')
     }
     catch (error) {
 

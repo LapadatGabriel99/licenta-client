@@ -6,17 +6,18 @@ import { getUserDetails, updateUserDetails } from '../../actions/user/userAction
 import '../../styles/Profile.css'
 import '../../App.css'
 import useForm from '../../hooks/useForm'
+import { sleep } from '../../services/miscService'
 
 const initialFormValues = {
     id: '',
     username: '',
     email: '',
+    firstname: '',
+    lastname: '',
     password: '********'
 }
 
 function UserProfile(props) {
-
-    const userId = useSelector(state => state.authentication.id, shallowEqual)
 
     const userState = useSelector(state => state.user, shallowEqual)
 
@@ -30,7 +31,7 @@ function UserProfile(props) {
 
         const fetchUser = async () => {
 
-            await dispatch(getUserDetails(userId, history))
+            await dispatch(getUserDetails(history))
 
             setReload(prev => !prev)
         }
@@ -45,8 +46,10 @@ function UserProfile(props) {
         setValues(prev => {
            
             return {
-                id: userState,
+                id: userState.id,
                 username: userState.username,
+                firstname: userState.firstname,
+                lastname: userState.lastname,
                 email: userState.email,
                 password: prev.password
             }
@@ -118,6 +121,8 @@ function UserProfile(props) {
             await dispatch(updateUserDetails({
                 'id': values.id,
                 'username': values.username,
+                'firstname': values.firstname,
+                'lastname': values.lastname,
                 'email': values.email,
                 'password': values.password
             }, history))
@@ -128,6 +133,7 @@ function UserProfile(props) {
             if (postValidationChecks()) {
 
                 post()
+                sleep(2500).then(() => setReload(prev => !prev))
             }
         }
     } 
@@ -137,7 +143,7 @@ function UserProfile(props) {
             <div className="center-oriented-content">
                 <h2 className="profile-title">User Details</h2>
             </div>
-            <FormGroup>
+            <FormGroup className="form-group-spacing">
                 <Form.Label>Username</Form.Label>
                 <Form.Control   type='text'
                                 placeholder='Enter username'
@@ -146,7 +152,25 @@ function UserProfile(props) {
                                 onChange={handleInputChange}
                                 error={errors.username}/>
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="form-group-spacing">
+                <FormGroup>First Name</FormGroup>
+                <Form.Control type='text'
+                              placeholder='Enter first name'
+                              name='firstname'
+                              value={values.firstname}
+                              onChange={handleInputChange}
+                              error={errors.firstname}/>
+            </FormGroup>
+            <FormGroup className="form-group-spacing">
+                <FormGroup>Last Name</FormGroup>
+                <Form.Control type='text'
+                              placeholder='Enter last name'
+                              name='lastname'
+                              value={values.lastname}
+                              onChange={handleInputChange}
+                              error={errors.lastname}/>
+            </FormGroup>
+            <FormGroup className="form-group-spacing">
                 <Form.Label>Email</Form.Label>
                 <Form.Control   type='text'
                                 placeholder='Enter email'
@@ -155,7 +179,7 @@ function UserProfile(props) {
                                 onChange={handleInputChange}
                                 error={errors.email}/>
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="form-group-spacing">
                 <Form.Label>Password</Form.Label>
                 <Form.Control   type='password'
                                 placeholder='Enter password'
@@ -164,10 +188,12 @@ function UserProfile(props) {
                                 onChange={handleInputChange}
                                 error={errors.password}/>
             </FormGroup>
-            <Button className="btn-lg btn-dark btn-block"
+            <div className="d-grid gap-2 mt-4">
+                <Button className="btn-lg btn-dark btn-block"
                     type='submit'>
-                Update Profile
-            </Button>
+                    Update Profile
+                </Button>
+            </div>
         </Form>
     )
 }

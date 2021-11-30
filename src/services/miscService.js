@@ -34,3 +34,9 @@ export const handleActionError = (error, history, dispatch, type) => {
 
     console.log(error.config)
 }
+
+export function sleep(ms) {
+    return new Promise(
+      resolve => setTimeout(resolve, ms)
+    );
+  }

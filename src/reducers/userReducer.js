@@ -12,7 +12,10 @@ export default function(state = initialState, action) {
             return action.payload
 
         case REFRESH_USER:
-            return action.payload
+            return {
+                id: action.payload.id,
+                username: action.payload.username
+            }
 
         default:
             return state;

@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Home from './components/index/Home';
 import AppBar from './components/header/AppBar';
+import { refreshUser } from './actions/user/userActions';
 
 function App() {
 
@@ -25,19 +26,19 @@ function App() {
 
   useEffect(() => {
 
-    // const refresh = async (userId) => {
+    const refresh = async () => {
 
-    //   await dispatch(refreshUser(userId, history))
+      await dispatch(refreshUser(history))
 
-    //   setRefresh(prev => !prev)
-    // }
+      setRefresh(prev => !prev)
+    }
 
-    // const userId = localStorage.getItem('userId')
+    const jwtToken = localStorage.getItem('jwtToken')
 
-    // if (userId) {
+    if (jwtToken) {
 
-    //   refresh(userId)
-    // }
+      refresh()
+    }
   }, [])
 
   useEffect(() => {

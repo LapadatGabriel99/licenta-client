@@ -5,6 +5,7 @@ import { CLEAR_ALL_DATA, GET_ERRORS, LOGIN, REGISTER, SUCCESSFUL_LOGIN, SUCCESSF
 export const login = (userCredentials, history) => async dispatch => {
 
     try {
+
         const response = await axios
             .post('http://localhost:8090/api/user/login', userCredentials)
 
@@ -54,7 +55,11 @@ export const logout = (history) => async dispatch => {
 
     try {
 
-        await axios.delete('http://localhost:8090/api/user/logout')
+        await axios.delete('http://localhost:8090/api/user/logout', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+            }
+        })
 
         dispatch({
             type: CLEAR_ALL_DATA,
@@ -67,6 +72,8 @@ export const logout = (history) => async dispatch => {
                 role: 'GUEST'
             }
         })
+
+        localStorage.removeItem('jwtToken')
 
         history.push('/')
     }

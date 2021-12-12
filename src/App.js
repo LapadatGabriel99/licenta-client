@@ -13,6 +13,12 @@ import { useHistory } from 'react-router';
 import Home from './components/index/Home';
 import AppBar from './components/header/AppBar';
 import { refreshUser } from './actions/user/userActions';
+import CategoryBoard from './components/category/CategoryBoard';
+import TestBoard from './components/test/TestBoard';
+import CreateCategory from './components/category/CreateCategory';
+import CreateTest from './components/test/CreateTest';
+import TestPage from './components/test/TestPage';
+import CategoryPage from './components/category/CategoryPage';
 
 function App() {
 
@@ -58,6 +64,12 @@ function App() {
           <Route exact path='/user-hub' component={UserHub}/>
           <Route exact path='/response-api-error' component={ResponseApiError}/>
           <Route exact path='/error' component={Error}/>
+          <Route exact path='/category-board' component={CategoryBoard}/>
+          <Route exact path='/test-board' component={TestBoard}/>
+          <Route exact path='/create-category' component={CreateCategory}/>
+          <Route exact path='/create-test' component={CreateTest}/>
+          <Route exact path='/test-page/:testId' component={TestPage}/>
+          <Route exact path='/category-page/:categoryId' component={CategoryPage}/>
         </Switch>
       </div>
     </Router>

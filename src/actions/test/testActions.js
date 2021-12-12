@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { handleActionError } from '../../services/miscService'
-import { GET_ERRORS } from '../types'
+import { GET_ERRORS, GET_TESTS } from '../types'
 
 export const addTest = (testDTO, history) => async dispatch => {
     
@@ -13,10 +13,21 @@ export const addTest = (testDTO, history) => async dispatch => {
     }
 }
 
-export const getTests = (history) => async dispatch => {
+export const getTests = (history, userId) => async dispatch => {
     
     try {
 
+        const response = await axios
+            .get('http://localhost:8090/api/test/all', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+                }
+            })
+
+        dispatch({
+            type: GET_TESTS,
+            payload: response.data
+        })
     }
     catch (error) {
 

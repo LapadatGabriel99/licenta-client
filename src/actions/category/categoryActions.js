@@ -1,11 +1,22 @@
 import axios from 'axios'
 import { handleActionError } from '../../services/miscService'
-import { GET_ERRORS } from '../types'
+import { GET_CATEGORIES, GET_ERRORS } from '../types'
 
-export const getCategories = (history) => async dispatch => {
+export const getCategories = (history, userId) => async dispatch => {
     
     try {
+        
+        const response = await axios
+            .get('http://localhost:8090/api/category/all', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+                }
+            })
 
+        dispatch({
+            type: GET_CATEGORIES,
+            payload: response.data
+        })
     }
     catch (error) {
 

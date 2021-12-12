@@ -11,9 +11,9 @@ function UserNav(props) {
                     <Nav.Link className="nav-bar-link" 
                               onClick={() => goToPage('/')}>Home</Nav.Link>
                     <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/')}>Tests</Nav.Link>
+                              onClick={() => goToPage('/test-board')}>Tests</Nav.Link>
                     <Nav.Link className="nav-bar-link"
-                              onClick={() => goToPage('/')}>Categories</Nav.Link>
+                              onClick={() => goToPage('/category-board')}>Categories</Nav.Link>
         </React.Fragment>
     )
 }

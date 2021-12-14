@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CreateTest() {
+function CreateTest(props) {
     return (
         <div>
             

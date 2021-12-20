@@ -114,7 +114,9 @@ function TestBoard() {
                                 onClick={()=> {
                                     setShow(prev => !prev)
                                     window.location.reload()
-                                }}/>
+                                }}>
+                            <div className="fas fa-window-close"></div>
+                        </Button>
                     </Container>
                 </Modal.Header>
                 <Modal.Body>

@@ -166,7 +166,7 @@ function QuestionItem(props) {
                         {question.questionText}
                     </h3>
                     <Button className="btn-danger float-right ml-4"
-                            onClick={() => deleteQuestion(question.questionId)}>
+                            onClick={onDeleteQuestionHandler}>
                         <div className="fas fa-minus-circle"></div>
                     </Button>
                     <Button className="btn-success float-right ml-4"

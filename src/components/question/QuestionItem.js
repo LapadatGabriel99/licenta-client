@@ -3,14 +3,14 @@ import { Button, Card, Col, Container, Modal, Row } from 'react-bootstrap'
 import { shallowEqual } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { deleteQuestion } from '../../actions/question/questionActions'
+import { deleteQuestion, updateQuestion } from '../../actions/question/questionActions'
 import AnswerItem from '../answer/AnswerItem'
 import CreateAnswer from '../answer/CreateAnswer'
 import UpdateQuestion from './UpdateQuestion'
 
 function QuestionItem(props) {
 
-    const { testId, question } = props.question
+    const { testId, question } = props
 
     const dispatch = useDispatch()
 
@@ -24,6 +24,12 @@ function QuestionItem(props) {
 
     useEffect(() => {
 
+        const put = async () => {
+
+            await dispatch(updateQuestion(question.id, question, history))
+        }
+    
+        put()
     }, [])
 
     useEffect(() => {
@@ -33,35 +39,47 @@ function QuestionItem(props) {
     let QuestionPage
     let UpdateQuestionPage
     let CreateAnswerPage
-    let answers = question.answerDTOS
+    let answers = question.answers
     let answerItems = []
     let nrCorrectAnswers = 0
 
-    for (var i = 0; i < answers.length; i++) {
+    const hasQuestionMultipleAnswers = answers => {
 
-        if (answers[i].correct === true) {
+        if (answers == null) {
 
-            nrCorrectAnswers++
+            return;
+        }
+
+        for (var i = 0; i < answers.length; i++) {
+
+            if (answers[i].correct === true) {
+    
+                nrCorrectAnswers++
+            }
+        }
+    
+        if (nrCorrectAnswers > 1) {
+    
+            question.hasMultipleAnswers = true
+        }
+        else {
+    
+            question.hasMultipleAnswers = false
         }
     }
 
-    if (nrCorrectAnswers > 1) {
+    hasQuestionMultipleAnswers(answers)
 
-        question.hasMultipleAnswers = true
-    }
-    else {
-
-        question.hasMultipleAnswers = false
-    }
-
-    const updateQuestion = async () => {
-
-        await dispatch(updateQuestion(question.id, question, history))
-    }
-
-    updateQuestion()
+    
 
     const QuestionPageContent = answers => {
+
+        if (answers == null) {
+
+            return(
+                <React.Fragment></React.Fragment>
+            )
+        }
 
         if (answers.length < 1) {
             return(
@@ -113,6 +131,13 @@ function QuestionItem(props) {
 
     const UpdateQuestionContent = () => {
 
+        if (question == null) {
+
+            return(
+                <React.Fragment></React.Fragment>
+            )
+        }
+
         if (question.questionId !== "") {
 
             const updatedQuestion = <UpdateQuestion key={question.questionId} 
@@ -131,6 +156,13 @@ function QuestionItem(props) {
     }
 
     const CreateAnswerContent = () => {
+
+        if (question == null) {
+
+            return(
+                <React.Fragment></React.Fragment>
+            )
+        }
 
         if (question.questionId !== "") {
 
@@ -179,7 +211,7 @@ function QuestionItem(props) {
                 </Card.Body>
             </Card>
 
-            <Modal show={() => setShowUpdateQuestion(prev => !prev)} centered>
+            <Modal show={showUpdateQuestion} centered>
                 <Modal.Header>
                     <Container className="text-right">
                         <Button className="btn-danger ml-4" 
@@ -194,7 +226,7 @@ function QuestionItem(props) {
                 </Modal.Body>
             </Modal>
 
-            <Modal show={() => setShowCreateAnswer(prev => !prev)} centered>
+            <Modal show={showCreateAnswer} centered>
                 <Modal.Header>
                     <Container className="text-right">
                         <Button className="btn-danger ml-4"

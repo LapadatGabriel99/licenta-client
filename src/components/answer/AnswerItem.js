@@ -76,7 +76,7 @@ function AnswerItem(props) {
                     </Button>
                 </Card.Header>
 
-                <Modal show={() => setShowUpdateQuestion(prev => !prev)} centered>
+                <Modal show={showUpdateAnswer} centered>
                     <Modal.Header>
                         <Container className="text-right">
                             <Button className="btn-danger ml-4"

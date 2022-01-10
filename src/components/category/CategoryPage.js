@@ -25,7 +25,7 @@ function CategoryPage(props) {
 
         const fetchCategory = async (id) => {
 
-            await dispatch(getCategory(history, id))
+            await dispatch(getCategory(id, history))
 
             setReload(prev => !prev)
         }
@@ -42,6 +42,15 @@ function CategoryPage(props) {
     let testItems = []
 
     const createCategoryPage = tests => {
+
+        if (tests == null) {
+
+            return (
+                <React.Fragment>
+                </React.Fragment>
+            )
+        }
+
         if (tests.length < 1) {
             return (
                 <div className = "alert alert-info text-center" role = "alert">
@@ -70,6 +79,14 @@ function CategoryPage(props) {
     }
 
     const createUpdateCategory = () => {
+
+        if (category == null) {
+
+            return (
+                <React.Fragment></React.Fragment>
+            )
+        }
+
         if (category.id !== "") {
 
             const updateCategory = <UpdateCategory key={category.id} id={category.id}/>
@@ -84,7 +101,7 @@ function CategoryPage(props) {
         }
     }
 
-    categoryPageContent = createCategoryPage(category.testDTOS)
+    categoryPageContent = createCategoryPage(category.tests)
     updateCategoryContent = createUpdateCategory()
 
     return(

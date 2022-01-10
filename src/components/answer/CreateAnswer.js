@@ -59,7 +59,7 @@ function CreateAnswer(props) {
 
         const post = async () => {
 
-            await dispatch(createAnswer(questionId, {
+            await dispatch(createAnswer(parseInt(questionId), {
                 answerText: values.answerText,
                 correct: values.correct
             }, history))
@@ -69,6 +69,17 @@ function CreateAnswer(props) {
 
             post()
         }
+
+        post()
+    }
+
+    const onChangeChecked = (e) => {
+
+        const { name, checked } = e.target
+        setValues({
+            ...values,
+            [name]: checked
+        })
     }
 
     return (
@@ -92,7 +103,7 @@ function CreateAnswer(props) {
                                             className="form-check-input"
                                             name="correct"
                                             checked={values.correct}
-                                            onChange={handleInputChange}/>
+                                            onChange={onChangeChecked}/>
                         </FormGroup>
                         <div className="d-grid gap-2 mt-4">
                             <Button className="btn-lg btn-dark"

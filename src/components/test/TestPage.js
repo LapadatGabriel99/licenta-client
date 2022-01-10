@@ -28,7 +28,7 @@ function TestPage(props) {
 
         const fetchTest = async (id) => {
 
-            await dispatch(getTest(history, id))
+            await dispatch(getTest(id, history))
 
             setReload(prev => !prev)
         }
@@ -46,6 +46,15 @@ function TestPage(props) {
     let questionItems = [];
 
     const createTestPage = questions => {
+
+        if (questions == null) {
+
+            return (
+                <React.Fragment>
+                </React.Fragment>
+            )
+        }
+
         if (questions.length < 1) {
             <div className = "alert alert-info text-center font-quicksand" role = "alert">
                 No questions
@@ -71,6 +80,15 @@ function TestPage(props) {
     }
 
     const updateTest = () => {
+
+        if (test == null) {
+
+            return (
+                <React.Fragment>
+                </React.Fragment>
+            )
+        }
+
         if (test.id !== "") {
             const newTest = <UpdateTest key={test.id} id={test.id}/>
 
@@ -85,6 +103,15 @@ function TestPage(props) {
     }
 
     const createQuestion = () => {
+
+        if (test == null) {
+
+            return (
+                <React.Fragment>
+                </React.Fragment>
+            )
+        }
+
         if (test.id !== "") {
             const newQuestion = <CreateQuestion key={test.id} testId={test.id}/>
 
@@ -98,7 +125,7 @@ function TestPage(props) {
         }
     }
 
-    testPageContent = createTestPage(test.questionDTOS)
+    testPageContent = createTestPage(test.questions)
     updateTestContent = updateTest()
     createQuestionContent = createQuestion()
 
@@ -106,11 +133,6 @@ function TestPage(props) {
         <Container className="text-center">
             <Row className="mb-4 justify-content-center">
                 <Col className="col-md-8">
-                    <Link to="/" className="btn btn-outline-primary">
-                        <div className="fas fa-arrow-circle-left">
-                            <div className="font-quicksand"> Back to board</div>
-                        </div>
-                    </Link>
                     <p />
                     <Container>
                         <h1 className="font-quicksand d-inline">test.name</h1>

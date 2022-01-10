@@ -69,6 +69,8 @@ function CreateQuestion(props) {
 
             post()
         }
+
+        post()
     }
 
     return (

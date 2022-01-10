@@ -87,6 +87,15 @@ function UpdateAnswer(props) {
         put()
     }
 
+    const onChangeChecked = (e) => {
+
+        const { name, checked } = e.target
+        setValues({
+            ...values,
+            [name]: checked
+        })
+    }
+
     return (
         <Container className="text-center">
             <Row>
@@ -108,7 +117,7 @@ function UpdateAnswer(props) {
                                             className="form-check-input"
                                             name="correct"
                                             checked={values.correct}
-                                            onChange={handleInputChange}/>
+                                            onChange={onChangeChecked}/>
                         </Form.Group>
                          <div className="d-grid gap-2 mt-4">
                             <Button className="btn-lg btn-dark"

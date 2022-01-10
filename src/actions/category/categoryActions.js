@@ -48,6 +48,9 @@ export const deleteCategory = (categoryId, history) => async dispatch => {
 export const getCategory = (categoryId, history) => async dispatch => {
     
     try {
+
+        console.log("Category id: " + categoryId)
+
         const response = await axios
             .get(`http://localhost:8090/api/category/${categoryId}`, {
             headers: {

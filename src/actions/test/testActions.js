@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { handleActionError } from '../../services/miscService'
-import { GET_ERRORS, GET_TESTS, CREATE_TEST, UPDATE_TEST } from '../types'
+import { GET_ERRORS, GET_TESTS, CREATE_TEST, UPDATE_TEST, GET_TEST } from '../types'
 
 export const createTest = (testDTO, history) => async dispatch => {
     
@@ -56,7 +56,7 @@ export const getTest = (id, history) => async dispatch => {
             })
 
         dispatch({
-            type: GET_TESTS,
+            type: GET_TEST,
             payload: response.data
         })
     }

@@ -56,6 +56,14 @@ function TestBoard() {
     modalContent = createTest()
 
     const createBoard = tests => {
+
+        if (tests == null) {
+
+            return (
+                <React.Fragment></React.Fragment>
+            )
+        }
+
         if (tests.lenght < 1) {
             return (
                 <Container>
@@ -73,6 +81,8 @@ function TestBoard() {
                 </Container>
             )
         }
+
+        console.log(tests)
 
         boardItems = tests.map(test => (
 

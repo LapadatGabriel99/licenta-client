@@ -55,6 +55,15 @@ function CategoryBoard(props) {
     modalContent = createCategory()
 
     const createBoard = categories => {
+
+        if (categories == null) {
+            
+            return (
+                <React.Fragment>
+                </React.Fragment>
+            )
+        }
+
         if (categories.length < 1) {
             return (
                 <Container>

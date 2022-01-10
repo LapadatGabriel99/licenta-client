@@ -10,7 +10,7 @@ export default function(state=initialState, action) {
         case GET_TESTS:
             return {
                 ...state,
-                tests: action.payload
+                tests: Object.values(action.payload)
             }
 
         case GET_TEST:

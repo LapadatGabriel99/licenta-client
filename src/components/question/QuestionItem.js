@@ -100,8 +100,8 @@ function QuestionItem(props) {
         }
         else {
 
-            const answersList = answers.map(answer => (
-                <AnswerItem key={answer.answerId} answer={answer} testId={testId} history={history}/>
+            const answersList = answers.map((answer, i) => (
+                <AnswerItem key={i} answer={answer} testId={testId} history={history}/>
             ))
 
             for (let i = 0; i < answersList.length; i++) {
@@ -140,9 +140,9 @@ function QuestionItem(props) {
 
         if (question.questionId !== "") {
 
-            const updatedQuestion = <UpdateQuestion key={question.questionId} 
+            const updatedQuestion = <UpdateQuestion key={question.id} 
                                                     testId={testId}
-                                                    questionId={question.questionId}
+                                                    questionId={question.id}
                                                     history={history}/>
 
             return(
@@ -166,9 +166,9 @@ function QuestionItem(props) {
 
         if (question.questionId !== "") {
 
-            const createAnswer = <CreateAnswer key={question.questionId} 
+            const createAnswer = <CreateAnswer key={question.id} 
                                                 testId={testId}
-                                                questionId={question.questionId}
+                                                questionId={question.id}
                                                 history={history}/>
 
             return (
@@ -187,7 +187,14 @@ function QuestionItem(props) {
 
     const onDeleteQuestionHandler = (questionId) => {
 
-        deleteQuestion(questionId, history)
+        const removeQuestion = async (id) => {
+
+            await dispatch(deleteQuestion(questionId, history))
+        }
+
+        removeQuestion(questionId)
+
+        window.location.reload()
     }
 
     return (
@@ -198,7 +205,7 @@ function QuestionItem(props) {
                         {question.questionText}
                     </h3>
                     <Button className="btn-danger float-right ml-4"
-                            onClick={onDeleteQuestionHandler}>
+                            onClick={() => onDeleteQuestionHandler(question.id)}>
                         <div className="fas fa-minus-circle"></div>
                     </Button>
                     <Button className="btn-success float-right ml-4"

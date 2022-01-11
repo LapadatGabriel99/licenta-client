@@ -49,8 +49,6 @@ export const getCategory = (categoryId, history) => async dispatch => {
     
     try {
 
-        console.log("Category id: " + categoryId)
-
         const response = await axios
             .get(`http://localhost:8090/api/category/${categoryId}`, {
             headers: {
@@ -93,6 +91,9 @@ export const createCategory = (category, history) => async dispatch => {
 export const updateCategory = (category, history) => async dispatch => {
     
     try {
+
+        console.log(category)
+
         const response = await axios
             .put('http://localhost:8090/api/category/update', category, {
             headers: {
@@ -101,7 +102,7 @@ export const updateCategory = (category, history) => async dispatch => {
         })
 
         dispatch({
-            type: CREATE_CATEGORY,
+            type: UPDATE_CATEGORY,
             payload: response.data
         })
     }

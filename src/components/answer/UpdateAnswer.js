@@ -85,6 +85,8 @@ function UpdateAnswer(props) {
         }
 
         put()
+
+        window.location.reload()
     }
 
     const onChangeChecked = (e) => {

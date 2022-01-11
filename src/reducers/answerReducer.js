@@ -11,7 +11,7 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 answers: state.answers.filter(answer =>
-                    answer.answerId !== action.payload
+                    answer.id !== action.payload
                     )
             }
         

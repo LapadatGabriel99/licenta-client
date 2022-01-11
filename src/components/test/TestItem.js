@@ -6,7 +6,7 @@ import { deleteTest } from '../../actions/test/testActions'
 
 function TestItem(props) {
 
-    const { test } = props
+    const { test, categoryId } = props
 
     const dispatch = useDispatch()
 
@@ -20,6 +20,8 @@ function TestItem(props) {
         }
 
         removeTest(id)
+
+        window.location.reload()
     }
 
     return (

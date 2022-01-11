@@ -10,7 +10,9 @@ import '../../styles/Create.css'
 
 const initialFormValues = {
     'id': '',
-    'name': ''
+    'name': '',
+    categoryId: '',
+    categoryName: ''
 }
 
 function UpdateTest(props) {
@@ -76,7 +78,9 @@ function UpdateTest(props) {
 
     const onSelectListChangedHandler = (e) => {
 
-        if(e.target.value == null || e.targe.value === "") {
+        const index = e.target.selectedIndex
+
+        if(e.target[index].value == null || e.target[index].value === "") {
             window.alert("Please select a valid category!")
             return
         }
@@ -98,6 +102,7 @@ function UpdateTest(props) {
         const put = async () => {
 
             await dispatch(updateTest({
+                'id': values.id,
                 'name': values.name,
                 'categoryId': values.categoryId,
                 'categoryName': values.categoryName
@@ -126,7 +131,7 @@ function UpdateTest(props) {
             }
 
             return(
-                <select className="form-control form-control-lg"
+                <select className="form-control form-control-lg form-group-spacing"
                         name="category"
                         value={values.categoryName}
                         onChange={onSelectListChangedHandler}>

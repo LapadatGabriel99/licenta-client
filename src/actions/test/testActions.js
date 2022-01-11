@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { handleActionError } from '../../services/miscService'
-import { GET_ERRORS, GET_TESTS, CREATE_TEST, UPDATE_TEST, GET_TEST } from '../types'
+import { GET_ERRORS, GET_TESTS, CREATE_TEST, UPDATE_TEST, GET_TEST, DELETE_TEST } from '../types'
 
 export const createTest = (testDTO, history) => async dispatch => {
     
@@ -69,6 +69,9 @@ export const getTest = (id, history) => async dispatch => {
 export const deleteTest = (id, history) => async dispatch => {
 
     try {
+
+        console.log("Test id:" + id)
+
         const response = await axios
             .delete(`http://localhost:8090/api/test/${id}`, {
                 headers: {
@@ -77,7 +80,7 @@ export const deleteTest = (id, history) => async dispatch => {
             })
 
         dispatch({
-            type: GET_TESTS,
+            type: DELETE_TEST,
             payload: response.data
         })
     }

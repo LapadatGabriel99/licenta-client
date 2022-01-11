@@ -89,7 +89,7 @@ function CreateTest(props) {
             return;
         }
 
-        const category = categories.filcer(c => c.testType === e.target.value)
+        const category = categories.filter(c => c.testType === e.target.value)
         setValues(prev => {
             return {
                 ...prev,

@@ -82,8 +82,8 @@ function CategoryBoard(props) {
             )
         }
 
-        boardItems = categories.map(category => (
-            <CategoryBoardItem id={category.id}
+        boardItems = categories.map((category, i) => (
+            <CategoryBoardItem key={i} id={category.id}
                            testType={category.testType}/>
         ));
 

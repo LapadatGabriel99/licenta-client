@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { deleteCategory } from '../../actions/category/categoryActions'
 
@@ -9,9 +10,18 @@ function CategoryBoardItem(props) {
 
     const history = useHistory()
 
+    const dispatch = useDispatch()
+
     const onDeleteHandler = (id) => {
 
-        deleteCategory(id, history)
+        const removeCategory = async (id) => {
+
+            await dispatch(deleteCategory(id, history))
+        }
+
+        removeCategory(id)
+
+        window.location.reload()
     }
 
     return (

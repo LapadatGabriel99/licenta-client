@@ -23,7 +23,7 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 questions: state.questions.filter(question =>
-                    question.questionId !== action.payload
+                    question.id !== action.payload
                     )
             }
 

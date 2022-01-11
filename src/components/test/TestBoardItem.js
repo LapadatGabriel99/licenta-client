@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { deleteTest } from '../../actions/test/testActions'
 
@@ -9,9 +10,18 @@ function TestBoardItem(props) {
 
     const history = useHistory()
 
+    const dispatch = useDispatch()
+
     const onDeleteHandler = (id) => {
 
-        deleteTest(id, history)
+        const removeTest = async (id) => {
+
+            await dispatch(deleteTest(id, history))
+        }
+
+        removeTest(id)
+
+        window.location.reload()
     }
     
     return (

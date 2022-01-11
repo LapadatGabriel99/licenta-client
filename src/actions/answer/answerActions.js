@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { handleActionError } from '../../services/miscService'
-import { CREATE_ANSWER, DELETE_ANSWER, GET_ERRORS, UPDATE_ANSWER } from '../types'
+import { CREATE_ANSWER, DELETE_ANSWER, GET_ANSWER, GET_ERRORS, UPDATE_ANSWER } from '../types'
 
 export const createAnswer = (questionId, answer, history) => async dispatch => {
     
@@ -80,7 +80,7 @@ export const getAnswer = (testId, answerId, history) => async dispatch => {
                 })
 
         dispatch({
-            type: DELETE_ANSWER,
+            type: GET_ANSWER,
             payload: response.data
         })
     }

@@ -71,6 +71,8 @@ function CreateQuestion(props) {
         }
 
         post()
+
+        window.location.reload()
     }
 
     return (

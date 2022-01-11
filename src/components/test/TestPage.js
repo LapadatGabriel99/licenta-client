@@ -61,8 +61,8 @@ function TestPage(props) {
             </div>
         }
         else {
-            const questionsList = questions.map(question => (
-                <QuestionItem key={question.id} question={question} testId={test.id}/>
+            const questionsList = questions.map((question, i) => (
+                <QuestionItem key={i} question={question} testId={test.id}/>
             ))
 
             for(let i = 0; i < questionsList.length; i++) {
@@ -90,7 +90,7 @@ function TestPage(props) {
         }
 
         if (test.id !== "") {
-            const newTest = <UpdateTest key={test.id} id={test.id}/>
+            const newTest = <UpdateTest key={test.id} testId={test.id}/>
 
             return(
                 <React.Fragment>
@@ -135,7 +135,7 @@ function TestPage(props) {
                 <Col className="col-md-8">
                     <p />
                     <Container>
-                        <h1 className="font-quicksand d-inline">test.name</h1>
+                        <h1 className="font-quicksand d-inline">{test.name}</h1>
                         <Button className="btn-success ml-4 mb-3" 
                                 onClick={() => setShowUpdateTest(prev => !prev)}>
                             <div className="fas fa-edit">

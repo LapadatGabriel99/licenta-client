@@ -33,7 +33,7 @@ function UpdateQuestion(props) {
         }
 
         fetchData(questionId)
-    })
+    }, [])
 
     useEffect(() => {
 
@@ -84,6 +84,10 @@ function UpdateQuestion(props) {
 
             window.location.reload()
         }
+
+        put()
+
+        window.location.reload()
     }
 
     return (

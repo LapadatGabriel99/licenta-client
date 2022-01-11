@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getCategory, updateCategory } from '../../actions/category/categoryActions'
 import useForm from '../../hooks/useForm'
+import { sleep } from '../../services/miscService'
 import '../../styles/Create.css'
 
 const initialFormValues = {
@@ -14,7 +15,7 @@ const initialFormValues = {
 
 function UpdateCategory(props) {
 
-    const { categoryId } = props
+    const { id } = props
 
     const dispatch = useDispatch()
 
@@ -33,7 +34,7 @@ function UpdateCategory(props) {
             setReload(prev => !prev)
         }
 
-        fetchCategory(categoryId)
+        fetchCategory(id)
     }, [])
 
     useEffect(() => {
@@ -74,8 +75,8 @@ function UpdateCategory(props) {
         e.preventDefault()
 
         const categoryDTO = {
-            id: category.id,
-            testType: category.testType
+            id: values.id,
+            testType: values.testType
         }
 
         if (category.testType === "") {
@@ -83,7 +84,14 @@ function UpdateCategory(props) {
             return (window.confirm("Category name cannot be empty"))
         }
 
-        updateCategory(categoryDTO, history)
+        const put = async () => {
+
+            await dispatch(updateCategory(categoryDTO, history))
+        }
+
+        put()
+
+        window.location.reload()
     }
 
     return (
@@ -96,10 +104,10 @@ function UpdateCategory(props) {
                             <Form.Label>Category Name</Form.Label>
                             <Form.Control   type="text"
                                             name="testType"
-                                            value={category.testType}
+                                            value={values.testType}
                                             placeholder="Category name"
                                             onChange={handleInputChange}
-                                            error={errors.testType}/>
+                                            errors={errors.testType}/>
                         </Form.Group>
                         <div className="d-grid gap-2 mt-4">
                             <Button className="btn-lg btn-dark btn-block"

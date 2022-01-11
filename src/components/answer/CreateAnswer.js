@@ -25,6 +25,9 @@ function CreateAnswer(props) {
 
     useEffect(() => {
 
+        console.log("Question Id: ")
+        console.log(questionId)
+
     },[])
 
     useEffect(() => {
@@ -71,6 +74,8 @@ function CreateAnswer(props) {
         }
 
         post()
+
+        window.location.reload()
     }
 
     const onChangeChecked = (e) => {

@@ -89,6 +89,8 @@ function CategoryPage(props) {
 
         if (category.id !== "") {
 
+            console.log("Category id: " + category.id)
+
             const updateCategory = <UpdateCategory key={category.id} id={category.id}/>
 
             return(

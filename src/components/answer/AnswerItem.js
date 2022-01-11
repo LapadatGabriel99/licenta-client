@@ -34,6 +34,8 @@ function AnswerItem(props) {
         }
 
         removeAnswer(id)
+
+        window.location.reload()
     }
 
     let UpdateAnswerPage;
@@ -42,9 +44,9 @@ function AnswerItem(props) {
 
         if(answer.answerId !== "") {
 
-            const updateAnswer = <UpdateAnswer key={answer.answerId} 
+            const updateAnswer = <UpdateAnswer key={answer.id} 
                                                 testId={testId}
-                                                answerId={answer.answerId}
+                                                answerId={answer.id}
                                                 history={history}/>
 
             return (
@@ -67,7 +69,7 @@ function AnswerItem(props) {
                         {answer.answerText}
                     </h5>
                     <Button className="btn-danger float-right ml-4"
-                            onClick={onDeleteAnswerHandler}>
+                            onClick={() => onDeleteAnswerHandler(answer.id)}>
                         <div className="fas fa-minus-circle"></div>
                     </Button>
                     <Button className="btn-success float-right ml-4"

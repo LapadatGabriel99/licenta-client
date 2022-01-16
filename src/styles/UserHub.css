@@ -1,13 +1,7 @@
 .main-text-area {
 
-    margin: 125px auto auto auto;
-    font-size: 3rem;
-}
-
-.main-carousel-area {
-
+    margin: 150px auto auto auto;
     border-radius: 12px;
-    overflow: hidden;
 }
 
 .drop-shadow{

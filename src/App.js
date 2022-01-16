@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/authentication/Login';
 import Register from './components/authentication/Register';
+import { default as RegisterPlayer } from './components/authentication/player/Register';
 import UserProfile from './components/user/UserProfile';
 import UserHub from './components/user/UserHub';
 import Error from './components/error/Error';
@@ -15,6 +16,8 @@ import AppBar from './components/header/AppBar';
 import { refreshUser } from './actions/user/userActions';
 import CategoryBoard from './components/category/CategoryBoard';
 import TestBoard from './components/test/TestBoard';
+import { default as PlayerTestBoard } from './components/test/player/TestBoard';
+import { default as PlayerScoreTestBoard } from './components/test/player/ScoreTestBoard';
 import CreateCategory from './components/category/CreateCategory';
 import CreateTest from './components/test/CreateTest';
 import TestPage from './components/test/TestPage';
@@ -60,12 +63,15 @@ function App() {
           <Route exact path="/" component={Home}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/register' component={Register}/>
+          <Route exact path='/register/player' component={RegisterPlayer}/>
           <Route exact path='/user-profile' component={UserProfile}/>
           <Route exact path='/user-hub' component={UserHub}/>
           <Route exact path='/response-api-error' component={ResponseApiError}/>
           <Route exact path='/error' component={Error}/>
           <Route exact path='/category-board' component={CategoryBoard}/>
           <Route exact path='/test-board' component={TestBoard}/>
+          <Route exact path='/player/test-board' component={PlayerTestBoard}/>
+          <Route exact path='/player/score-test-board' component={PlayerScoreTestBoard}/>
           <Route exact path='/create-category' component={CreateCategory}/>
           <Route exact path='/create-test' component={CreateTest}/>
           <Route exact path='/test-page/:testId' component={TestPage}/>

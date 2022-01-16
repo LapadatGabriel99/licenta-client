@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import UserNav from './UserNav';
 import NavBarAccount from './NavBarAccount'
 import '../../styles/AppBar.css'
+import PlayerNav from './PlayerNav';
 
 function AppBar(props) {
     const { isLoggedIn, role } = props
@@ -52,6 +53,13 @@ function AppBar(props) {
 
                 return (
                     <UserNav goToPage={goToPage}/>
+                )
+            }
+
+            if (role === 'PLAYER') {
+
+                return (
+                    <PlayerNav goToPage={goToPage}/>
                 )
             }
         }

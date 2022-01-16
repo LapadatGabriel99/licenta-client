@@ -61,6 +61,8 @@ const ResponseApiError = (props) => {
             else {
 
                 const errors = Object.keys(error).map((key) => [key, error[key]])
+
+                return handleComplexErrorMessage(errors)
             }
         }
     }

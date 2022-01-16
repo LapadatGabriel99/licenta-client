@@ -1,11 +1,11 @@
 import React from 'react'
 import { Form, FormGroup, Button } from 'react-bootstrap'
-import '../../styles/Login.css'
-import '../../App.css'
-import { register } from '../../actions/authentication/authenticationActions'
+import '../../../styles/Login.css'
+import '../../../App.css'
+import { register } from '../../../actions/authentication/authenticationActions'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
-import useForm from '../../hooks/useForm'
+import useForm from '../../../hooks/useForm'
 
 const initialFormValues = {
     username: '',
@@ -64,7 +64,10 @@ const Register = () => {
                 'username': values.username,
                 'email': values.email,
                 'password': values.password,
-                'confirmPassword': values.confirmPassword
+                'confirmPassword': values.confirmPassword,
+                'roles': [{
+                    'name': 'PLAYER' 
+                }]
             }, history))
         }
 
@@ -78,7 +81,7 @@ const Register = () => {
         <Form className="login-form" onSubmit={onRegisterButtonClick}>
             <div className="center-oriented-content">
                 <h1>
-                    <span className="font-weight-bold">User Create Tool</span>.com
+                    <span className="font-weight-bold">Player Test Tool</span>.com
                 </h1>
                 <h2 className="text-center">Welcome</h2>
             </div>

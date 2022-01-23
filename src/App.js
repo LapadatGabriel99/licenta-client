@@ -18,6 +18,7 @@ import CategoryBoard from './components/category/CategoryBoard';
 import TestBoard from './components/test/TestBoard';
 import { default as PlayerTestBoard } from './components/test/player/TestBoard';
 import { default as PlayerScoreTestBoard } from './components/test/player/ScoreTestBoard';
+import { default as PlayerTestPage } from './components/test/player/TestPage';
 import CreateCategory from './components/category/CreateCategory';
 import CreateTest from './components/test/CreateTest';
 import TestPage from './components/test/TestPage';
@@ -72,6 +73,7 @@ function App() {
           <Route exact path='/test-board' component={TestBoard}/>
           <Route exact path='/player/test-board' component={PlayerTestBoard}/>
           <Route exact path='/player/score-test-board' component={PlayerScoreTestBoard}/>
+          <Route exact path='/player/test-page/:testId' component={PlayerTestPage}/>
           <Route exact path='/create-category' component={CreateCategory}/>
           <Route exact path='/create-test' component={CreateTest}/>
           <Route exact path='/test-page/:testId' component={TestPage}/>

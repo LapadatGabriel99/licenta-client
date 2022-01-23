@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ScoreTestBoard(props) {
+function QuestionItem(props) {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function ScoreTestBoard(props) {
     )
 }
 
-export default ScoreTestBoard
+export default QuestionItem

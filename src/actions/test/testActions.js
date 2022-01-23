@@ -45,6 +45,28 @@ export const getTests = (history, userId) => async dispatch => {
     }
 }
 
+export const getTestsForPlayer = (history) => async dispatch => {
+
+    try {
+
+        const response = await axios
+            .get('http://localhost:8090/api/test/player/all', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+                }
+            })
+
+        dispatch({
+            type: GET_TESTS,
+            payload: response.data
+        })
+    }
+    catch (error) {
+
+        handleActionError(error, history, dispatch, GET_ERRORS) 
+    }
+}
+
 export const getTest = (id, history) => async dispatch => {
     
     try {

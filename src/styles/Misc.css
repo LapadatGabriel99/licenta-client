@@ -28,3 +28,30 @@
 
     font-family: Roboto;
 }
+
+.card-area-category-page {
+
+    border-left: 0;
+    border-right: 0;
+}
+
+.card-footer-area-category-page {
+
+    height: 30px;
+}
+
+.button-page-top {
+
+    font-family: Quicksand;
+    font-size: 20px;
+}
+
+.card-question-item {
+
+    border-radius: 50%;
+}
+
+.card-question-item-header {
+
+    height: 85px;
+}

@@ -3,6 +3,7 @@ import { Button, Card } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { deleteTest } from '../../actions/test/testActions'
+import '../../styles/Misc.css'
 
 function TestItem(props) {
 
@@ -25,7 +26,7 @@ function TestItem(props) {
     }
 
     return (
-        <Card className="mb-1 bg-dark">
+        <Card className="mb-1 bg-dark shadow-button card-area-category-page border-0">
             <Card.Header className="text-primary">
                 <Card.Title className="text-white">{test.name}</Card.Title>
             </Card.Header>
@@ -38,6 +39,7 @@ function TestItem(props) {
                     <div className="fas fa-minus-circle"> Delete test</div>
                 </Button>
             </Card.Body>
+            <Card.Footer className="bg-dark card-footer-area-category-page"></Card.Footer>
         </Card>
     )
 }

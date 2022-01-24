@@ -63,16 +63,16 @@ function AnswerItem(props) {
 
     return (
         <Container>
-            <Card className={answer.correct ? "mb-1 bg-warning" : "mb-1 bg-light"}>
+            <Card className={answer.correct ? "mb-3 bg-warning border-0 shadow" : "mb-3 bg-light border-0 shadow"}>
                 <Card.Header className="text-dark">
                     <h5 className="card-title text-dark text-center font-quicksand d-inline">
                         {answer.answerText}
                     </h5>
-                    <Button className="btn-danger float-right ml-4"
+                    <Button className="btn-danger float-right ml-4 border-0"
                             onClick={() => onDeleteAnswerHandler(answer.id)}>
                         <div className="fas fa-minus-circle"></div>
                     </Button>
-                    <Button className="btn-success float-right ml-4"
+                    <Button className="btn-success float-right ml-4 border-0"
                             onClick={() => setShowUpdateQuestion(prev => !prev)}>
                         <div className="fas fa-edit"></div>
                     </Button>

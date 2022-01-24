@@ -139,16 +139,18 @@ function TestPage(props) {
                         <Card className="text-center mb-2 page-header">
                             <Card.Header className="bg-dark page-header-shadow text-white">
                                 <h3 className="font-quicksand">{test.name}</h3>
-                                <Button className="btn-success mt-1 ml-4 mb-3 float-right d-inline-flex" 
-                                    onClick={() => setShowUpdateTest(prev => !prev)}>
-                                    <div className="fas fa-edit">
-                                    </div>
-                                    <span className="card-header-area"> Update</span>
-                                </Button>
                             </Card.Header>
                         </Card>
                     </Container>
-                    <Container className="text-left mt-4 mb-4">
+                    <Container className="mt-4">
+                        <Button className="btn-success mt-1 ml-4 mb-3 shadow border-0" 
+                            onClick={() => setShowUpdateTest(prev => !prev)}>
+                            <div className="fas fa-edit">
+                            </div>
+                            <span className="button-page-top"> Update</span>
+                        </Button>
+                    </Container>
+                    <Container className="text-left mt-1 mb-4">
                         <Button className="btn-dark mb-4 mt-4 shadow-button"
                                 onClick={() => setShowCreateQuestion(prev => !prev)}>
                             <div className="fas fa-plus-circle">

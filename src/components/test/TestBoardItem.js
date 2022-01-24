@@ -26,7 +26,7 @@ function TestBoardItem(props) {
     }
     
     return (
-        <Card className="bg-light mb-1 text-center mt-4 page-header-shadow">
+        <Card className="bg-light mb-1 text-center mt-4 page-header-shadow border-0">
             <Card.Header className="text-dark bg-light">
                 <Link to={`/test-page/${id}`} className="btn btn-success ml-4 float-right">
                     <div className="fas fa-edit"/>

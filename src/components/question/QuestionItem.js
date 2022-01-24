@@ -200,19 +200,25 @@ function QuestionItem(props) {
 
     return (
         <Container className="mb-5">
-            <Card className={question.hasMultipleAnswers ? "mb-1 bg-light page-header-shadow" : "mb-1 bg-light page-header-shadow"}>
-                <Card.Header className="text-dark bg-light">
-                    <h3 className="text-center d-inline card-body-area card-title">
-                        {question.questionText}
-                    </h3>
-                    <Button className="btn-danger float-right ml-4 mb-1"
-                            onClick={() => onDeleteQuestionHandler(question.id)}>
-                        <div className="fas fa-minus-circle"></div>
-                    </Button>
-                    <Button className="btn-success float-right ml-4 mb-1"
-                            onClick={() => setShowUpdateQuestion(prev => !prev)}>
-                        <div className="fas fa-edit"></div>
-                    </Button>    
+            <Card className={question.hasMultipleAnswers 
+                ? "mb-1 bg-light page-header-shadow border-0 rounded-3" 
+                : "mb-1 bg-light page-header-shadow border-0 rounded-3"}>
+                <Card.Header className="text-dark bg-light card-question-item-header">
+                    <Card className="bg-light shadow border-0">
+                        <Card.Header className="bg-light">
+                            <h3 className="text-center d-inline card-body-area card-title">
+                            {question.questionText}
+                            </h3>
+                            <Button className="btn-danger float-right ml-4 mb-1 border-0"
+                                    onClick={() => onDeleteQuestionHandler(question.id)}>
+                                <div className="fas fa-minus-circle"></div>
+                            </Button>
+                            <Button className="btn-success float-right ml-4 mb-1 border-0"
+                                    onClick={() => setShowUpdateQuestion(prev => !prev)}>
+                                <div className="fas fa-edit"></div>
+                            </Button>  
+                        </Card.Header>
+                    </Card>  
                 </Card.Header>
                 <Card.Body className="bg-light">
                     {QuestionPage}

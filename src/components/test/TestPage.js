@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Container, Modal, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Modal, Row } from 'react-bootstrap'
 import { shallowEqual } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
@@ -7,6 +7,7 @@ import { getTest } from '../../actions/test/testActions'
 import CreateQuestion from '../question/CreateQuestion'
 import QuestionItem from '../question/QuestionItem'
 import UpdateTest from './UpdateTest'
+import '../../styles/Misc.css'
 
 function TestPage(props) {
 
@@ -135,15 +136,20 @@ function TestPage(props) {
                 <Col className="col-md-8">
                     <p />
                     <Container>
-                        <h1 className="font-quicksand d-inline">{test.name}</h1>
-                        <Button className="btn-success ml-4 mb-3" 
-                                onClick={() => setShowUpdateTest(prev => !prev)}>
-                            <div className="fas fa-edit">
-                            </div>
-                        </Button>
+                        <Card className="text-center mb-2 page-header">
+                            <Card.Header className="bg-dark page-header-shadow text-white">
+                                <h3 className="font-quicksand">{test.name}</h3>
+                                <Button className="btn-success mt-1 ml-4 mb-3 float-right d-inline-flex" 
+                                    onClick={() => setShowUpdateTest(prev => !prev)}>
+                                    <div className="fas fa-edit">
+                                    </div>
+                                    <span className="card-header-area"> Update</span>
+                                </Button>
+                            </Card.Header>
+                        </Card>
                     </Container>
-                    <Container className="text-left">
-                        <Button className="btn-primary ml-3"
+                    <Container className="text-left mt-4 mb-4">
+                        <Button className="btn-dark mb-4 mt-4 shadow-button"
                                 onClick={() => setShowCreateQuestion(prev => !prev)}>
                             <div className="fas fa-plus-circle">
                                 <div className= "font-quicksand"> Add Question</div>

@@ -3,6 +3,7 @@ import { Button, Card } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { deleteTest } from '../../actions/test/testActions'
+import '../../styles/Misc.css'
 
 function TestBoardItem(props) {
 
@@ -25,25 +26,25 @@ function TestBoardItem(props) {
     }
     
     return (
-        <Card className="bg-light mb-1 text-center mt-4">
-            <Card.Header className="text-dark">
-                <h3 className="text-center d-inline font-quicksand card-title">
-                    Name: {name}
-                </h3>
+        <Card className="bg-light mb-1 text-center mt-4 page-header-shadow">
+            <Card.Header className="text-dark bg-light">
                 <Link to={`/test-page/${id}`} className="btn btn-success ml-4 float-right">
                     <div className="fas fa-edit"/>
+                    <span className="card-header-area"> Update Test</span>
                 </Link>
                 <Button className="btn-danger ml-4 float-right"
                         onClick={() => onDeleteHandler(id)}>
                     <div className="fas fa-minus-circle"/>
+                    <span className="card-header-area"> Remove Test</span>
                 </Button>
             </Card.Header>
             <Card.Body className="bg-light">
-                <Card.Title className="font-quicksand">Category: </Card.Title>
-                <Card.Text className="text-truncate font-quicksand fs-4">
-                    {categoryName}
+                <Card.Title className="card-body-area text-dark">Name: {name}</Card.Title>
+                <Card.Text className="text-truncate card-body-area fs-4 text-dark">
+                    Category: {categoryName}
                 </Card.Text>
             </Card.Body>
+            <Card.Footer className="bg-light card-footer-area"></Card.Footer>
         </Card>
     )
 }

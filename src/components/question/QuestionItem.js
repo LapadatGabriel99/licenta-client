@@ -7,6 +7,7 @@ import { deleteQuestion, updateQuestion } from '../../actions/question/questionA
 import AnswerItem from '../answer/AnswerItem'
 import CreateAnswer from '../answer/CreateAnswer'
 import UpdateQuestion from './UpdateQuestion'
+import '../../styles/Misc.css'
 
 function QuestionItem(props) {
 
@@ -113,7 +114,7 @@ function QuestionItem(props) {
                 <React.Fragment>
                     <Container>
                         <Container className="text-left">
-                            <Button className="btn-primary ml-2" 
+                            <Button className="btn-dark ml-2 shadow-button" 
                                     onClick={() => setShowCreateAnswer(prev => !prev)}>
                                 <div className="fas fa-plus-circle">
                                     <div className="font-quicksand"> Add Answer</div>
@@ -198,17 +199,17 @@ function QuestionItem(props) {
     }
 
     return (
-        <Container>
-            <Card className={question.hasMultipleAnswers ? "mb-1 bg-info" : "mb-1 bg-light"}>
-                <Card.Header className="text-primary">
-                    <h3 className="text-center d-inline font-quicksand card-title">
+        <Container className="mb-5">
+            <Card className={question.hasMultipleAnswers ? "mb-1 bg-light page-header-shadow" : "mb-1 bg-light page-header-shadow"}>
+                <Card.Header className="text-dark bg-light">
+                    <h3 className="text-center d-inline card-body-area card-title">
                         {question.questionText}
                     </h3>
-                    <Button className="btn-danger float-right ml-4"
+                    <Button className="btn-danger float-right ml-4 mb-1"
                             onClick={() => onDeleteQuestionHandler(question.id)}>
                         <div className="fas fa-minus-circle"></div>
                     </Button>
-                    <Button className="btn-success float-right ml-4"
+                    <Button className="btn-success float-right ml-4 mb-1"
                             onClick={() => setShowUpdateQuestion(prev => !prev)}>
                         <div className="fas fa-edit"></div>
                     </Button>    
@@ -216,6 +217,7 @@ function QuestionItem(props) {
                 <Card.Body className="bg-light">
                     {QuestionPage}
                 </Card.Body>
+                <Card.Footer className="bg-light card-footer-area"></Card.Footer>
             </Card>
 
             <Modal show={showUpdateQuestion} centered>

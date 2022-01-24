@@ -6,6 +6,7 @@ import { useHistory } from 'react-router'
 import { getTests } from '../../actions/test/testActions'
 import CreateTest from './CreateTest'
 import TestBoardItem from './TestBoardItem'
+import '../../styles/Misc.css'
 
 function TestBoard() {
 
@@ -95,16 +96,17 @@ function TestBoard() {
             <Container>
                 <Row>
                     <Col>
-                        <Button className="btn-primary mb-4"
+                        <Button className="btn-dark mb-4 mt-4 shadow-button"
                                 onClick={() => setShow(prev => !prev)}>
                             <div className="fas fa-plus-circle"></div>
                             <span className="font-quicksand"> Add Test</span>
                         </Button>
-                        <Card className="text-center mb-2">
-                            <Card.Header className="bg-primary text-white">
+                        <Card className="text-center mb-2 page-header">
+                            <Card.Header className="bg-dark page-header-shadow text-white">
                                 <h3 className="font-quicksand">Tests</h3>
                             </Card.Header>
                         </Card>
+                        <hr className="mb-4"/>
                         {boardItems}
                     </Col>
                 </Row>

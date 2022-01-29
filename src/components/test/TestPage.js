@@ -135,29 +135,33 @@ function TestPage(props) {
             <Row className="mb-4 justify-content-center">
                 <Col className="col-md-8">
                     <p />
-                    <Container>
-                        <Card className="text-center mb-2 page-header">
-                            <Card.Header className="bg-dark page-header-shadow text-white">
-                                <h3 className="font-quicksand">{test.name}</h3>
-                            </Card.Header>
-                        </Card>
-                    </Container>
-                    <Container className="mt-4">
-                        <Button className="btn-success mt-1 ml-4 mb-3 shadow border-0" 
-                            onClick={() => setShowUpdateTest(prev => !prev)}>
-                            <div className="fas fa-edit">
-                            </div>
-                            <span className="button-page-top"> Update</span>
-                        </Button>
-                    </Container>
-                    <Container className="text-left mt-1 mb-4">
-                        <Button className="btn-dark mb-4 mt-4 shadow-button"
-                                onClick={() => setShowCreateQuestion(prev => !prev)}>
-                            <div className="fas fa-plus-circle">
-                                <div className= "font-quicksand"> Add Question</div>
-                            </div>
-                        </Button>
-                    </Container>
+                    <Card className="text-center mb-5 bg-light shadow border-0 rounded-pill">
+                        <Card.Header className="bg-light shadow border-0 rounded-pill">
+                            <Container className="w-75 pt-4">
+                                <Card className="text-center mb-2 page-header shadow rounded-3">
+                                    <Card.Header className="bg-dark text-white rounded-3">
+                                        <h3 className="font-quicksand">{test.name}</h3>
+                                    </Card.Header>
+                                </Card>
+                            </Container>
+                            <Container className="mt-4">
+                                <Button className="btn-success mt-1 ml-4 mb-3 shadow border-0" 
+                                    onClick={() => setShowUpdateTest(prev => !prev)}>
+                                    <div className="fas fa-edit">
+                                    </div>
+                                    <span className="button-page-top"> Update</span>
+                                </Button>
+                            </Container>
+                            <Container className="text-left mt-1 mb-4">
+                                <Button className="btn-dark mb-4 mt-4 shadow-button"
+                                        onClick={() => setShowCreateQuestion(prev => !prev)}>
+                                    <div className="fas fa-plus-circle">
+                                        <div className= "font-quicksand"> Add Question</div>
+                                    </div>
+                                </Button>
+                            </Container>
+                        </Card.Header>
+                    </Card>
                     {testPageContent}
 
                     <Modal show={showUpdateTest} centered>

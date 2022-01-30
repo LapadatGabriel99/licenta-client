@@ -8,6 +8,7 @@ import questionReducer from "./questionReducer";
 import answerReducer from "./answerReducer";
 import userReducer from "./userReducer";
 import authorizationReducer from "./authorizationReducer";
+import scoredTestReducer from "./scoredTestReducer";
 
 const appReducer = combineReducers({
     error: errorReducer,
@@ -18,6 +19,7 @@ const appReducer = combineReducers({
     category: categoryReducer,
     question: questionReducer,
     answer: answerReducer,
+    scoredTest: scoredTestReducer
 })
 
 const emptyState = {
@@ -49,6 +51,10 @@ const emptyState = {
     answer: {
         answers: [],
         answer: {}
+    },
+    scoredTest: {
+        scoredTests: [],
+        scoredTest: {}
     }
 }
 

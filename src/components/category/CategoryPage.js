@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Modal } from 'react-bootstrap'
+import { Button, Card, Container, Modal } from 'react-bootstrap'
 import { shallowEqual } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -107,15 +107,19 @@ function CategoryPage(props) {
     updateCategoryContent = createUpdateCategory()
 
     return(
-        <Container className="text-center">
-            <h1>{category.testType}</h1>
-            <br/>
-            <Container>
-                <Button className="btn-success ml-4" onClick={() => setShow(prev => !prev)}>
-                    <div className="fas fa-arrow-up"> Update</div>
-                </Button>
-            </Container>
-            <br />
+        <Container className="text-center mt-4">
+            <Card className="text-center mb-5 bg-light shadow border-0 rounded-pill">
+                <Card.Header className="bg-light shadow border-0 rounded-pill">
+                    <Container className="w-75 pt-4">
+                        <h1>{category.testType}</h1>
+                    </Container>
+                    <Container className="mt-4 pb-3">
+                        <Button className="btn-success ml-4" onClick={() => setShow(prev => !prev)}>
+                            <div className="fas fa-arrow-up"> Update</div>
+                        </Button>
+                    </Container>
+                </Card.Header>
+            </Card>
             <p />
             {categoryPageContent}
             <Modal show={show} centered>

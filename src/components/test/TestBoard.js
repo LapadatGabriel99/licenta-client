@@ -65,7 +65,7 @@ function TestBoard() {
             )
         }
 
-        if (tests.lenght < 1) {
+        if (tests.length < 1) {
             return (
                 <Container>
                     <Row>

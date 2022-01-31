@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getScoredTests } from '../../../actions/scoredTest/scoredTestActions'
 import ScoreTestBoardItem from './ScoreTestBoardItem'
+import '../../../styles/Misc.css'
 
 function ScoreTestBoard(props) {
 

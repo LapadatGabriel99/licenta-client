@@ -71,8 +71,6 @@ function QuestionItem(props) {
 
     hasQuestionMultipleAnswers(answers)
 
-    
-
     const QuestionPageContent = answers => {
 
         if (answers == null) {

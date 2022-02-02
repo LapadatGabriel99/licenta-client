@@ -78,7 +78,7 @@ function TestPage(props) {
             <Row className="mb-4 justify-content-center">
                 <Col className="col-md-8">
                     <p />
-                    <Container>
+                    <Container className="mb-5">
                         <Card className="text-center mb-2">
                             <Card.Header className="bg-primary text-white">
                                 <h3 className="font-quicksand">{test.name}</h3>

@@ -9,7 +9,7 @@ import '../../../styles/Misc.css'
 
 function QuestionItem(props) {
 
-    const { testId, question } = props
+    const { key, testId, question } = props
 
     const dispatch = useDispatch()
 
@@ -50,7 +50,11 @@ function QuestionItem(props) {
         else {
 
             const answersList = answers.map((answer, i) => (
-                <AnswerItem key={i} answer={answer} testId={testId} history={history}/>
+                <AnswerItem key={i} 
+                            questionKey={key}
+                            answer={answer} 
+                            testId={testId} 
+                            questionHasMultipleAnswers={question.hasMultipleAnswers}/>
             ))
 
             for (let i = 0; i < answersList.length; i++) {
@@ -73,11 +77,23 @@ function QuestionItem(props) {
     QuestionPage = QuestionPageContent(answers)
 
     return (
-        <Container>
-            <Card>
-                <Card.Header>
+        <Container className="mb-5">
+            <Card className="mb-1 bg-light page-header-shadow border-0 rounded-3">
+                <Card.Header className="text-dark bg-light card-question-item-header">
+                    <Card className="bg-light shadow border-0 mt-2">
+                        <Card.Header className="bg-light">
+                            <h3 className="text-center d-inline card-body-area card-title">
+                                {question.questionText}
+                            </h3>
+                        </Card.Header>
+                    </Card>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body className="bg-light pt-1">
+                    <Container>
+                        <form>
+                            {QuestionPage}
+                        </form>
+                    </Container>
                 </Card.Body>
                 <Card.Footer className="bg-light card-footer-area"></Card.Footer>
             </Card>

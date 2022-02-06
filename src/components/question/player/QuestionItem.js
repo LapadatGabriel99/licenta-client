@@ -51,6 +51,7 @@ function QuestionItem(props) {
 
             const answersList = answers.map((answer, i) => (
                 <AnswerItem key={i} 
+                            questionId={question.id}
                             questionKey={key}
                             answer={answer} 
                             testId={testId} 

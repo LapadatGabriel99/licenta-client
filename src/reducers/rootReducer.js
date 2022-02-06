@@ -59,7 +59,8 @@ const emptyState = {
         scoredTest: {}
     },
     quiz: {
-        quizAnswers: []
+        quizAnswers: [],
+        testId: ''
     }
 }
 

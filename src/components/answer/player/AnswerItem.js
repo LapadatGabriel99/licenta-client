@@ -4,11 +4,12 @@ import { useState } from 'react'
 import { Container, Form } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { ADD_ANSWER_QUIZ, REMOVE_ANSWER_QUIZ } from '../../../actions/types'
 import '../../../styles/Misc.css'
 
 function AnswerItem(props) {
 
-    const { key, questionKey, answer, testId, questionHasMultipleAnswers } = props
+    const { key, questionId, questionKey, answer, testId, questionHasMultipleAnswers } = props
 
     let answerId = `answer-${questionKey}.${key}`;
 
@@ -28,6 +29,33 @@ function AnswerItem(props) {
 
     }, [reload])
 
+    useEffect(() => {
+    
+        const payload = {
+            'answerId': answer.id,
+            'questionId': questionId,
+        }
+
+        if (isChecked === true) {
+
+            dispatch({
+                type: ADD_ANSWER_QUIZ,
+                payload: payload,
+                testId: testId
+            })
+        }
+
+        if (isChecked === false) {
+
+            dispatch({
+                type: REMOVE_ANSWER_QUIZ,
+                payload: {
+                    'answerId': answer.id,
+                }
+            })
+        }
+    }, [isChecked])
+
     const answerType = (questionHasMultipleAnswers, answerId, answerText) => {
 
         if (questionHasMultipleAnswers) {
@@ -35,7 +63,7 @@ function AnswerItem(props) {
             return (
                 <div className="mb-3 form-check">
                     <input type="checkbox" className="form-check-input" id={answerId} 
-                            checked={isChecked} onChange={() => setIsChecked(prev => !prev)}/>
+                            checked={isChecked} onChange={() => { setIsChecked(prev => !prev)}}/>
                     <label className="form-check-label font-quicksand" 
                             for={answerId}>{answerText}</label>
                 </div>                    
@@ -45,7 +73,8 @@ function AnswerItem(props) {
             
             return (
                 <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id={answerId}/>
+                    <input type="checkbox" className="form-check-input" id={answerId}
+                            checked={isChecked} onChange={() => { setIsChecked(prev => !prev)}}/>
                     <label className="form-check-label font-quicksand" 
                             for={answerId}>{answerText}</label>
                 </div>

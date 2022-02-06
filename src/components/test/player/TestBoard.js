@@ -64,7 +64,7 @@ function TestBoard(props) {
         ))
 
         return (
-            <Container>
+            <Container className="w-75 mt-4">
                 <Row>
                     <Col>
                         <Card className="text-center mb-2">
@@ -72,7 +72,9 @@ function TestBoard(props) {
                                 <h3 className="font-quicksand">Tests</h3>
                             </Card.Header>
                         </Card>
-                        {boardItems}
+                        <Container className="mt-2">
+                            {boardItems}
+                        </Container>
                     </Col>
                 </Row>
             </Container>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Col, Container, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getTest } from '../../../actions/test/testActions'
@@ -73,6 +73,18 @@ function TestPage(props) {
     
     testPageContent = createTestPage(test.questions)
 
+    const onGoBackClick = (e) => {
+        e.preventDefault()
+
+        history.push('/player/test-board')
+    }
+
+    const onSubmitAnswersClick = (e) => {
+        e.preventDefault()
+
+        history.push('/player/test-page/submit')
+    }
+
     return (
         <Container className="text-center">
             <Row className="mb-4 justify-content-center">
@@ -81,11 +93,42 @@ function TestPage(props) {
                     <Container className="mb-5">
                         <Card className="text-center mb-2">
                             <Card.Header className="bg-primary text-white">
-                                <h3 className="font-quicksand">{test.name}</h3>
+                                <Container>
+                                    <Row>
+                                        <Col className="col-md-4">
+                                            <Button className="btn-primary"
+                                                    onClick={onGoBackClick}>
+                                                <div className="fas fa-arrow-left"></div>
+                                            </Button>
+                                        </Col>
+                                        <Col className="col-md-4">
+                                            <h3 className="font-quicksand">{test.name}</h3>
+                                        </Col>
+                                        <Col className="col-md-4">
+                                        </Col>
+                                    </Row>
+                                </Container>
                             </Card.Header>
                         </Card>
                     </Container>
                     {testPageContent}
+                    <Container>
+                        <Row className="quiz-page-button-area">
+                            <Col className="col-md-4">
+                                <Button className="btn-primary btn-lg mt-3"
+                                        onClick={onGoBackClick}>
+                                    Go Back
+                                </Button>
+                            </Col>
+                            <Col className="col-md-4">
+                            </Col>
+                            <Col className="col-md-4">
+                                <Button className="btn-success btn-lg mt-3">
+                                    Submit
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Col>
             </Row>
         </Container>

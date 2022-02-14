@@ -1,8 +1,10 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { postTestAnswers } from '../../../actions/scoredTest/scoredTestActions';
 
 function TestPageSubmit(props) {
 
@@ -18,10 +20,10 @@ function TestPageSubmit(props) {
 
         const post = async () => {
 
-            await dispatch({
+            await dispatch(postTestAnswers({
                 'testId': testAnswers.testId,
-                'postAnswers': quiz.quizAnswers
-            })
+                'postAnswers': testAnswers.quizAnswers
+            }, history))
 
             setReload(prev => !prev)
         }
@@ -32,7 +34,6 @@ function TestPageSubmit(props) {
     useEffect(() => {
 
         
-
     }, [reload])
 
     return(

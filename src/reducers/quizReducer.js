@@ -1,4 +1,4 @@
-import { ADD_ANSWER_QUIZ, REMOVE_ANSWER_QUIZ } from "../actions/types";
+import { ADD_ANSWER_QUIZ, CLEAR_ANSWER_QUIZ, REMOVE_ANSWER_QUIZ } from "../actions/types";
 
 const initialState = {
     quizAnswers: [],
@@ -7,6 +7,12 @@ const initialState = {
 
 export default function(state = initialState, action){
     switch(action.type){
+        case CLEAR_ANSWER_QUIZ:
+            return {
+                quizAnswers: [],
+                testId: ''
+            }
+
         case ADD_ANSWER_QUIZ:
             return {
                 ...state,

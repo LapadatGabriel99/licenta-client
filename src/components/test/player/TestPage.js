@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { getTest } from '../../../actions/test/testActions'
+import { CLEAR_ANSWER_QUIZ } from '../../../actions/types'
 import QuestionItem from '../../question/player/QuestionItem'
 
 function TestPage(props) {
@@ -22,6 +23,11 @@ function TestPage(props) {
         const fetchTest = async (id) => {
 
             await dispatch(getTest(id, history))
+
+            dispatch({
+                type: CLEAR_ANSWER_QUIZ,
+                payload: ''
+            })
 
             setReload(prev => !prev)
         }
@@ -82,7 +88,8 @@ function TestPage(props) {
     const onSubmitAnswersClick = (e) => {
         e.preventDefault()
 
-        history.push('/player/test-page/submit')
+        console.log('here');
+        history.push(`/player/test-page/${testId}/submit`)
     }
 
     return (
@@ -123,7 +130,8 @@ function TestPage(props) {
                             <Col className="col-md-4">
                             </Col>
                             <Col className="col-md-4">
-                                <Button className="btn-success btn-lg mt-3">
+                                <Button onClick={onSubmitAnswersClick} 
+                                      className="btn-success btn-lg mt-3">
                                     Submit
                                 </Button>
                             </Col>

@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Card, Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { getScoredTests } from '../../../actions/scoredTest/scoredTestActions'
 import { getTestsForPlayer } from '../../../actions/test/testActions'
 import TestBoardItem from './TestBoardItem'
 
@@ -60,7 +61,8 @@ function TestBoard(props) {
 
             <TestBoardItem id={test.id}
                             name={test.name}
-                            categoryName={test.categoryName}/>
+                            categoryName={test.categoryName}
+                            wasTaken={test.wasTestTaken}/>
         ))
 
         return (

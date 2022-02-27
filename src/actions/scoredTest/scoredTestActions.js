@@ -68,6 +68,28 @@ export const getScoredTest = (id, history) => async dispatch => {
     }
 }
 
+export const getScoredTestByTestId = (testId, history) => async dispatch => {
+
+    try {
+
+        const response = await axios
+            .get(`http://localhost:8090/api/scored-test/get-by-test-id/${testId}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+                }
+            })
+
+        dispatch({
+            type: GET_SCORED_TEST,
+            payload: response.data
+        })
+    }
+    catch(error) {
+
+        handleActionError(error, history, dispatch, GET_ERRORS)
+    }
+}
+
 export const updateScoredTest = (dto, history) => async dispatch => {
 
     try {

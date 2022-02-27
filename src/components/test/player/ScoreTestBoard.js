@@ -70,11 +70,14 @@ function ScoreTestBoard(props) {
 
             <ScoreTestBoardItem id={scoredTest.id}
                                  name={scoredTest.name}
-                                 categoryName={scoredTest.categoryName}/>
+                                 categoryName={scoredTest.categoryName}
+                                 numOfCorrectAnswers={scoredTest.numOfCorrectAnswers}
+                                 numOfWrongAnswers={scoredTest.numOfWrongAnswers}
+                                 wasTestModified={scoredTest.wasTestModified}/>
         ))
 
         return (
-            <Container>
+            <Container className="w-75 mt-4">
                 <Row>
                     <Col>
                         <Card className="text-center mb-2">
@@ -82,7 +85,9 @@ function ScoreTestBoard(props) {
                                 <h3 className="font-quicksand">Scored Tests</h3>
                             </Card.Header>
                         </Card>
-                        {boardItems}
+                        <Container className="mt-2">
+                            {boardItems}
+                        </Container>
                     </Col>
                 </Row>
             </Container>

@@ -15,7 +15,7 @@ function TestBoardItem(props) {
         if (wasTaken) {
 
             return(
-                <Link to={`/player/test-page/${id}`} 
+                <Link to={`/player/update-test-page/${id}`} 
                                 className="btn btn-success ml-4 float-right">
                     <i class="fa fa-edit"></i>
                 </Link>

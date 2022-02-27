@@ -24,6 +24,8 @@ import CreateTest from './components/test/CreateTest';
 import TestPage from './components/test/TestPage';
 import CategoryPage from './components/category/CategoryPage';
 import TestPageSubmit from './components/test/player/TestPageSubmit';
+import UpdateTestPage from './components/test/player/UpdateTestPage';
+import UpdateTestPageSubmit from './components/test/player/UpdateTestPageSubmit';
 
 function App() {
 
@@ -76,6 +78,8 @@ function App() {
           <Route exact path='/player/score-test-board' component={PlayerScoreTestBoard}/>
           <Route exact path='/player/test-page/:testId' component={PlayerTestPage}/>
           <Route exact path='/player/test-page/:testId/submit' component={TestPageSubmit}/>
+          <Route exact path='/player/update-test-page/:testId' component={UpdateTestPage}/>
+          <Route exact path='/player/update-test-page/:testId/submit' component={UpdateTestPageSubmit}/>
           <Route exact path='/create-category' component={CreateCategory}/>
           <Route exact path='/create-test' component={CreateTest}/>
           <Route exact path='/test-page/:testId' component={TestPage}/>

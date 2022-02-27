@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Button, Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -36,10 +37,23 @@ function TestPageSubmit(props) {
         
     }, [reload])
 
+    const onGoBackClick = (e) => {
+        e.preventDefault()
+
+        history.push('/player/test-board')
+    }
+
     return(
-        <div className="alert alert-success text-center" role="start">
-            Answers submitted successfully!
-        </div>
+        <Container className="mt-5 w-50">
+            <div className="alert alert-success text-center" role="start">
+                Answers submitted successfully!
+            </div>
+            <Button className="btn-success"
+                     onClick={onGoBackClick}>
+                <div className="fas fa-arrow-left text-light"></div>
+                <span className="btn-back-submit-page text ml-1">Go Back</span>
+            </Button>
+        </Container>
     );
 }
 

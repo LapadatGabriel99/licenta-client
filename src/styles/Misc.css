@@ -59,3 +59,14 @@
 .quiz-page-button-area {
     height: 75px;
 }
+
+.answers-submitted-success {
+
+    font-family: Quicksand;
+}
+
+.btn-back-submit-page {
+
+    font-family: Roboto;
+    color: white
+}

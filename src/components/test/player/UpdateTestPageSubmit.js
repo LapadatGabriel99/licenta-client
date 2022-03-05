@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import '../../../styles/Misc.css'
+import '../../../services/miscService';
 import { useEffect } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { getScoredTestByTestId, updateScoredTest } from '../../../actions/scoredTest/scoredTestActions'
+import { isObject } from '../../../services/miscService';
 
 const UpdateTestPageSubmit = () => {
     const testAnswers = useSelector(state => state.quiz) 
@@ -14,11 +16,11 @@ const UpdateTestPageSubmit = () => {
 
     const dispatch = useDispatch()
 
+    const history = useHistory()
+
     const [reload, setReload] = useState(false)
 
     const [reloadAgain, setReloadAgain] = useState(false)
-
-    const history = useHistory()
 
     useEffect(() => {
 
@@ -45,13 +47,15 @@ const UpdateTestPageSubmit = () => {
             setReloadAgain(prev => !prev)
         }
 
-        post()
+        if (reload === true) {
+
+            post()
+        }
     }, [reload])
 
     useEffect(() => {
 
-        
-    }, reloadAgain)
+    }, [reloadAgain])
 
     const onGoBackClick = (e) => {
         e.preventDefault()
